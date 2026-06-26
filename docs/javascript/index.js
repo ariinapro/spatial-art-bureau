@@ -1,4 +1,5 @@
-if (window.location.pathname.split("/").pop() === "shop.html") {
+var _page = window.location.pathname.split("/").pop();
+if (_page === "shop.html" || _page === "index.html" || _page === "") {
   history.scrollRestoration = "manual";
 }
 
@@ -36,6 +37,14 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
+  if (current === "index.html" || current === "") {
+    document.querySelectorAll(".product-card").forEach(function(card) {
+      card.addEventListener("click", function() {
+        sessionStorage.setItem("indexScrollY", String(window.scrollY || window.pageYOffset));
+      });
+    });
+  }
+
   var cartBtn = document.querySelector(".product-detail__cart-btn");
   var cartModal = document.getElementById("cart-modal");
   var cartModalClose = document.getElementById("cart-modal-close");
@@ -57,21 +66,55 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 window.addEventListener("load", function() {
-  // Restore shop scroll position
-  if (window.location.pathname.split("/").pop() === "shop.html") {
+  var p = window.location.pathname.split("/").pop();
+  if (p === "shop.html") {
     var savedScroll = sessionStorage.getItem("shopScrollY");
     if (savedScroll) {
       sessionStorage.removeItem("shopScrollY");
       window.scrollTo(0, parseInt(savedScroll));
     }
   }
+  if (p === "index.html" || p === "") {
+    var savedIndex = sessionStorage.getItem("indexScrollY");
+    if (savedIndex) {
+      sessionStorage.removeItem("indexScrollY");
+      window.scrollTo(0, parseInt(savedIndex, 10));
+    }
+  }
 });
+
+var _scrollRafId = null;
+var _nativeSmoothScroll = 'scrollBehavior' in document.documentElement.style;
+
+function smoothScrollTo(target, duration) {
+  if (_scrollRafId !== null) {
+    cancelAnimationFrame(_scrollRafId);
+    _scrollRafId = null;
+  }
+  if (_nativeSmoothScroll) {
+    window.scrollTo({ top: target, behavior: 'smooth' });
+    return;
+  }
+  var start = window.scrollY || window.pageYOffset;
+  var diff = target - start;
+  if (!diff) return;
+  var startTime = null;
+  function step(ts) {
+    if (!startTime) startTime = ts;
+    var t = Math.min(1, (ts - startTime) / duration);
+    t = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    window.scrollTo(0, Math.round(start + diff * t));
+    if (t < 1) { _scrollRafId = requestAnimationFrame(step); }
+    else { _scrollRafId = null; }
+  }
+  _scrollRafId = requestAnimationFrame(step);
+}
 
 // Principles scroll animation (about page)
 (function() {
   var N = 4;
   var ITEM_HEIGHT = 187;
-  var SNAP_THRESHOLD = 200;
+  var SNAP_THRESHOLD = 150;
   var SCROLL_PER_STEP = 150;
   var progress = 0;
   var locked = false;
@@ -96,15 +139,15 @@ window.addEventListener("load", function() {
   function lock() {
     if (locked) return;
     locked = true;
-    snapAccum = 0;
+    snapAccum = SNAP_THRESHOLD * 0.5;
     lockedScrollY = stepScrollY();
-    window.scrollTo({ top: lockedScrollY, behavior: 'smooth' });
+    smoothScrollTo(lockedScrollY, 350);
   }
 
   function unlock() {
     if (!locked) return;
     locked = false;
-    window.scrollTo({ top: lockedScrollY, behavior: 'smooth' });
+    smoothScrollTo(lockedScrollY, 350);
   }
 
   function calcTrigger() {
@@ -119,7 +162,7 @@ window.addEventListener("load", function() {
     if (!block || !label || items.length === 0) return;
 
     calcTrigger();
-    if (window.scrollY >= triggerY) progress = N;
+    if ((window.scrollY || window.pageYOffset) >= triggerY) progress = N;
     render();
 
     var revealObserver = new IntersectionObserver(function(entries) {
@@ -133,7 +176,7 @@ window.addEventListener("load", function() {
 
     setInterval(function() {
       if (locked) {
-        snapAccum *= 0.9;
+        snapAccum *= 0.97;
         if (Math.abs(snapAccum) < 2) snapAccum = 0;
       }
     }, 80);
@@ -156,19 +199,19 @@ window.addEventListener("load", function() {
           lockedScrollY = stepScrollY();
           render();
           if (progress >= N) unlock();
-          else window.scrollTo({ top: lockedScrollY, behavior: 'smooth' });
+          else smoothScrollTo(lockedScrollY, 350);
         } else if (snapAccum <= -SNAP_THRESHOLD) {
           snapAccum = 0;
           progress = Math.max(0, progress - 1);
           lockedScrollY = stepScrollY();
           render();
           if (progress <= 0) unlock();
-          else window.scrollTo({ top: lockedScrollY, behavior: 'smooth' });
+          else smoothScrollTo(lockedScrollY, 350);
         }
         return;
       }
 
-      var sy = window.scrollY;
+      var sy = window.scrollY || window.pageYOffset;
       var entryY = stepScrollY();
       if (d > 0 && progress < N && sy + d >= entryY) {
         e.preventDefault();
@@ -238,7 +281,7 @@ window.addEventListener("load", function() {
     if (!bp1 || !bp2 || !bp3) return;
 
     calcTrigger();
-    if (window.scrollY >= triggerY) progress = 2;
+    if ((window.scrollY || window.pageYOffset) >= triggerY) progress = 2;
     render();
 
     window.addEventListener('resize', function() {
@@ -258,7 +301,7 @@ window.addEventListener("load", function() {
         return;
       }
 
-      var sy = window.scrollY;
+      var sy = window.scrollY || window.pageYOffset;
 
       if (d > 0 && progress < 2 && sy + d >= triggerY) {
         e.preventDefault();

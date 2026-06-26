@@ -107,6 +107,7 @@
 
     joinOverlay.addEventListener('click',  function (e) { if (e.target === joinOverlay)  closeModal(joinOverlay); });
     orderOverlay.addEventListener('click', function (e) { if (e.target === orderOverlay) closeModal(orderOverlay); });
+
   }
 
   if (document.readyState === 'loading') {

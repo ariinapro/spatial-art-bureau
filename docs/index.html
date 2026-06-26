@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <script src="assets/index.js"></script>
+    <script src="javascript/index.js"></script>
     <div class="wrapper">
         <div class="navbar">
             <div class="navbar-container" id="navbar-instance">
@@ -129,24 +129,24 @@
 
     <div class="shop-top-dotted-line"></div>
     <div class="product-carousel-wrapper">
-        <div class="product-card" id="shop-card-1">
+        <a class="product-card" id="shop-card-1" href="product-3.html">
             <div class="shop-photo-box">
                 <img src="assets/t-shirt-main.png" alt="футболка" class="shop-photo-box__img">
             </div>
             <div class="product-title"><p>футболка</p></div>
-        </div>
-        <div class="product-card" id="shop-card-2">
+        </a>
+        <a class="product-card" id="shop-card-2" href="product-2.html">
             <div class="shop-photo-box">
                 <img src="assets/phone-case.png" alt="чехол" class="shop-photo-box__img">
             </div>
             <div class="product-title"><p>чехол</p></div>
-        </div>
-        <div class="product-card" id="shop-card-3">
+        </a>
+        <a class="product-card" id="shop-card-3" href="product-4.html">
             <div class="shop-photo-box">
                 <img src="assets/tape.png" alt="скотч" class="shop-photo-box__img">
             </div>
             <div class="product-title"><p>скотч</p></div>
-        </div>
+        </a>
     </div>
     <div class="shop-photo-line"></div>
 
@@ -168,7 +168,9 @@
         </div>
 
         <div class="book-cover">
-            <img src="assets/book-cover.png" alt="обложка книги" class="book-cover__img">
+            <a href="book.html">
+                <img src="assets/book-cover.png" alt="обложка книги" class="book-cover__img">
+            </a>
         </div>
         <div class="more-link more-link--book">
             <a href="book.html">посмотреть книгу</a>
@@ -189,20 +191,21 @@
             <li><a href="book.html">книга</a></li>
         </ul>
         <ul class="footer-lower-row">
-            <li><a href="change_later" class="footer-cta-btn">заказать арт-объект</a></li>
-            <li><a href="change_later" class="footer-cta-btn">стать частью бюро</a></li>
+            <li><a href="artists.html" class="footer-cta-btn">заказать арт-объект</a></li>
+            <li><a href="artists.html" class="footer-cta-btn">стать частью бюро</a></li>
         </ul>
         <ul class="footer-lowest-row">
-            <li><a href="https://t.me/sbureau">[tg: @sbureau]</a></li>
+            <li><span>[tg: @sbureau]</span></li>
             <li class="footer-contacts">
                 <span>pochta@gmail.com</span>
-                <span>+89999999999</span>
+                <span>+8 (939) 708-04-02</span>
             </li>
-            <li><a href="https://vk.com/sbureau">[vk: @sbureau]</a></li>
+            <li><span>[vk: @sbureau]</span></li>
         </ul>
         <div class="footer-line"></div>
     </div>
     <script src="javascript/main.js" defer></script>
 
+<script src="javascript/modals.js" defer></script>
 </body>
 </html>

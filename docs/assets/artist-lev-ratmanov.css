@@ -88,10 +88,14 @@
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding: 14px 24px;
   background-color: black;
   color: #EFEBE6;
+  border: 1px solid black;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 .artist-cta-btn:hover {
   background-color: #EFEBE6;

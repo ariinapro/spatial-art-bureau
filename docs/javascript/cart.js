@@ -6,17 +6,20 @@
     var hline   = document.querySelector('.cart-center-hline');
     if (!num || !textBox || !vline || !hline) return;
 
-    var x        = Math.round(num.getBoundingClientRect().right + 10);
-    var textTop  = Math.round(textBox.getBoundingClientRect().top);
-    var midY     = Math.round(textTop / 2);
+    var x         = Math.round(num.getBoundingClientRect().right + 10);
+    var topOffset = 97;
+    var textTop   = Math.round(textBox.getBoundingClientRect().top);
+    var midY      = Math.round((textTop + topOffset) / 2);
 
     vline.style.left   = x + 'px';
-    vline.style.height = textTop + 'px';
+    vline.style.height = Math.max(0, textTop - topOffset) + 'px';
 
     hline.style.top = midY + 'px';
 
+    vline.style.height = Math.max(0, midY - topOffset) + 'px';
+
     var leftVline = document.querySelector('.cart-left-vline');
-    if (leftVline) leftVline.style.height = midY + 'px';
+    if (leftVline) leftVline.style.height = Math.max(0, midY - topOffset) + 'px';
   }
 
   if (document.readyState === 'loading') {

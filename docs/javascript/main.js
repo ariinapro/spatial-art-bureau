@@ -116,6 +116,14 @@
 
   window.addEventListener('resize', computeLock);
   computeLock();
+
+  window.addEventListener('load', function() {
+    var sy = window.scrollY || window.pageYOffset;
+    if (state === 'before' && sy > lockScrollY + 50) {
+      targetP = 1; visualP = 1; placeTrack(1); updateCaption(1);
+      state = 'after';
+    }
+  });
 })();
 
 (function () {
