@@ -161,6 +161,40 @@
           <div class="footer-line"></div>
         </div>
     </div>
+
+    <div class="artist-form-overlay" id="artist-order-modal">
+      <div class="artist-form-box" id="artist-order-box">
+        <button class="artist-form-box__close" id="artist-order-modal-close">&times;</button>
+        <form class="artist-form" onsubmit="return false;">
+          <input class="artist-form__field" type="text" placeholder="Ваше имя">
+          <input class="artist-form__field" type="text" placeholder="E-mail / Номер телефона">
+          <div class="artist-form__dropdown" id="artist-dropdown">
+            <div class="artist-form__dropdown-header">
+              <span class="artist-form__dropdown-label">Выбрать художника</span>
+              <span class="artist-form__dropdown-arrow"></span>
+            </div>
+            <ul class="artist-form__dropdown-list" id="artist-dropdown-list"></ul>
+          </div>
+        </form>
+        <button class="artist-form-box__submit" id="artist-order-submit" type="button">отправить</button>
+        <div class="artist-form-box__confirm">Ожидайте обратной связи</div>
+      </div>
+    </div>
+
+    <div class="artist-form-overlay" id="artist-form-modal">
+      <div class="artist-form-box" id="artist-form-box">
+        <button class="artist-form-box__close" id="artist-form-modal-close">&times;</button>
+        <form class="artist-form" onsubmit="return false;">
+          <input  class="artist-form__field" type="text" placeholder="Ваше имя">
+          <input  class="artist-form__field" type="text" placeholder="E-mail / Номер телефона">
+          <textarea class="artist-form__field artist-form__field--textarea" placeholder="Расскажите о себе и своем опыте"></textarea>
+        </form>
+        <button class="artist-form-box__submit" id="artist-form-submit" type="button">отправить</button>
+        <div class="artist-form-box__confirm">Ожидайте обратной связи</div>
+      </div>
+    </div>
+
+  <script src="javascript/artists.js" defer></script>
   <script>
     function positionSidebar() {
       var navbar = document.querySelector('.navbar');

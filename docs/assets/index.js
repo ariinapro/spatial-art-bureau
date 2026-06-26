@@ -47,6 +47,13 @@ document.addEventListener("DOMContentLoaded", function() {
       if (e.target === cartModal) cartModal.classList.remove("active");
     });
   }
+
+  var cartGoBtn = document.querySelector(".cart-modal__btn");
+  if (cartGoBtn) {
+    cartGoBtn.addEventListener("click", function() {
+      window.location.href = "cart.html";
+    });
+  }
 });
 
 window.addEventListener("load", function() {

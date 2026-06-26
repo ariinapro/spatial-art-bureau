@@ -82,14 +82,25 @@
     
     <div class="artists-carousel-wrapper">
         <div class="artists-carousel-track">
+            <!-- clone of last photo — peeks in from the left at p=0 -->
             <div class="artists-carousel-item">
-                <img src="assets/work-1-img-1.png" alt="Лев Ратманов" class="artists-carousel-item__img">
+                <img src="assets/work-7-img-2.png" alt="След прикосновения — Герман Вельский" class="artists-carousel-item__img">
             </div>
             <div class="artists-carousel-item">
-                <img src="assets/work-3-img-1.png" alt="Алиса Северина" class="artists-carousel-item__img">
+                <img src="assets/work-1-img-2.png" alt="Плоскость сдвига — Лев Ратманов" class="artists-carousel-item__img">
             </div>
             <div class="artists-carousel-item">
-                <img src="assets/work-4-img-1.png" alt="Марк Осипов" class="artists-carousel-item__img">
+                <img src="assets/work-3-img-1.png" alt="Точка натяжения — Алиса Северина" class="artists-carousel-item__img">
+            </div>
+            <div class="artists-carousel-item">
+                <img src="assets/work-5-img-1.png" alt="Архитектура проекции — Марк Осипов" class="artists-carousel-item__img">
+            </div>
+            <div class="artists-carousel-item">
+                <img src="assets/work-7-img-2.png" alt="След прикосновения — Герман Вельский" class="artists-carousel-item__img">
+            </div>
+            <!-- clone of first photo — peeks in from the right at p=1 -->
+            <div class="artists-carousel-item">
+                <img src="assets/work-1-img-2.png" alt="Плоскость сдвига — Лев Ратманов" class="artists-carousel-item__img">
             </div>
         </div>
     </div>
@@ -116,25 +127,32 @@
         </div>
     </div>
 
+    <div class="shop-top-dotted-line"></div>
     <div class="product-carousel-wrapper">
         <div class="product-card" id="shop-card-1">
-            <div class="product-photo">
-                <img src="assets/t-shirt-main.png" alt="футболка" class="product-photo__img">
+            <div class="shop-photo-box">
+                <img src="assets/t-shirt-main.png" alt="футболка" class="shop-photo-box__img">
             </div>
             <div class="product-title"><p>футболка</p></div>
         </div>
         <div class="product-card" id="shop-card-2">
-            <div class="product-photo">
-                <img src="assets/phone-case.png" alt="чехол" class="product-photo__img">
+            <div class="shop-photo-box">
+                <img src="assets/phone-case.png" alt="чехол" class="shop-photo-box__img">
             </div>
             <div class="product-title"><p>чехол</p></div>
         </div>
         <div class="product-card" id="shop-card-3">
-            <div class="product-photo">
-                <img src="assets/tape.png" alt="скотч" class="product-photo__img">
+            <div class="shop-photo-box">
+                <img src="assets/tape.png" alt="скотч" class="shop-photo-box__img">
             </div>
             <div class="product-title"><p>скотч</p></div>
         </div>
+    </div>
+    <div class="shop-photo-line"></div>
+
+    <div class="more-link more-link--shop">
+        <a href="shop.html">весь ассортимент</a>
+        <img src="assets/arrow.png" alt="arrow" class="arrow">
     </div>
 
     <div class="horizontal-grid horizontal-grid--book">
@@ -150,12 +168,15 @@
         </div>
 
         <div class="book-cover">
+            <img src="assets/book-cover.png" alt="обложка книги" class="book-cover__img">
         </div>
         <div class="more-link more-link--book">
             <a href="book.html">посмотреть книгу</a>
             <img src="assets/arrow.png" alt="arrow" class="arrow">
         </div>
     </div>
+
+    <div class="book-cover-v-line"></div>
 
     <div class="horizontal-grid horizontal-grid--footer">
     </div>
@@ -181,212 +202,7 @@
         </ul>
         <div class="footer-line"></div>
     </div>
-    <script>
-    (function () {
-      var artistsSidebar = document.querySelector('.sidebar-box--artists');
-      var navbar         = document.querySelector('.navbar');
-      var track          = document.querySelector('.artists-carousel-track');
-      if (!artistsSidebar || !track) return;
+    <script src="javascript/main.js" defer></script>
 
-      var TOTAL_RANGE = 600; // wheel-delta px for full p 0→1 transition
-      var GAP         = 30;  // px gap between cards
-
-      var state       = 'before';
-      var targetP     = 0;
-      var visualP     = 0;
-      var lockScrollY = 0;
-      var snapping    = false;
-      var rafId       = null;
-
-      function computeLock() {
-        var navBottom        = navbar ? navbar.getBoundingClientRect().bottom : 0;
-        var sidebarBottomDoc = artistsSidebar.getBoundingClientRect().bottom + window.scrollY;
-        lockScrollY = Math.max(0, Math.round(sidebarBottomDoc - navBottom));
-        placeTrack(visualP);
-      }
-
-      // p=0: work-1 centered (work-3 half-left, work-4 half-right)
-      // p=1: work-4 centered (work-1 half-left)
-      function placeTrack(p) {
-        var vw = window.innerWidth;
-        var tx = -(0.25 * vw + GAP) - p * (0.5 * vw + GAP);
-        track.style.transform = 'translateX(' + Math.round(tx) + 'px)';
-      }
-
-      function tick() {
-        var diff = targetP - visualP;
-        if (Math.abs(diff) < 0.0008) {
-          visualP = targetP;
-          placeTrack(visualP);
-          rafId = null;
-          return;
-        }
-        visualP += diff * 0.1;
-        placeTrack(visualP);
-        rafId = requestAnimationFrame(tick);
-      }
-
-      function startAnim() { if (!rafId) rafId = requestAnimationFrame(tick); }
-      function snapTo(y)   { snapping = true; window.scrollTo(0, y); }
-
-      window.addEventListener('wheel', function (e) {
-        if (state === 'locked') {
-          e.preventDefault();
-          targetP += e.deltaY / TOTAL_RANGE;
-          if (targetP >= 1) { targetP = 1; startAnim(); state = 'after';  return; }
-          if (targetP <= 0) { targetP = 0; startAnim(); state = 'before'; return; }
-          startAnim();
-          return;
-        }
-        if (state === 'before' && e.deltaY > 0 && window.scrollY + e.deltaY >= lockScrollY) {
-          e.preventDefault();
-          snapTo(lockScrollY);
-          targetP = 0; visualP = 0; placeTrack(0);
-          state = 'locked';
-          return;
-        }
-        if (state === 'after' && e.deltaY < 0 && window.scrollY <= lockScrollY + 5) {
-          e.preventDefault();
-          snapTo(lockScrollY);
-          state = 'locked';
-          targetP = 1;
-          targetP += e.deltaY / TOTAL_RANGE;
-          targetP = Math.max(0, Math.min(1, targetP));
-          startAnim();
-          if (targetP <= 0) state = 'before';
-        }
-      }, { passive: false });
-
-      window.addEventListener('scroll', function () {
-        if (snapping) { snapping = false; return; }
-        if (state === 'locked') { snapTo(lockScrollY); return; }
-        if (state === 'before' && window.scrollY >= lockScrollY) {
-          targetP = 0; visualP = 0; placeTrack(0);
-          state = 'locked'; snapTo(lockScrollY); return;
-        }
-        if (state === 'after' && window.scrollY < lockScrollY) {
-          targetP = 1; visualP = 1; placeTrack(1);
-          state = 'locked'; snapTo(lockScrollY);
-        }
-      }, { passive: true });
-
-      window.addEventListener('resize', computeLock);
-      computeLock();
-    })();
-    </script>
-    <script>
-    (function () {
-      var shopSidebar = document.querySelector('.sidebar-box--shop');
-      var navbar      = document.querySelector('.navbar');
-      var card1 = document.getElementById('shop-card-1');
-      var card2 = document.getElementById('shop-card-2');
-      var card3 = document.getElementById('shop-card-3');
-      if (!shopSidebar || !card1) return;
-
-      var shopState    = 'before'; // 'before' | 'locked' | 'after'
-      var shopProgress = 0;        // 0..1
-      var lockScrollY  = 0;
-      var RANGE        = 450;      // wheel-delta px for full animation
-      var snapping     = false;
-
-      function computeLock() {
-        var navBottom      = navbar ? navbar.getBoundingClientRect().bottom : 0;
-        var sidebarDocTop  = shopSidebar.getBoundingClientRect().top + window.scrollY;
-        lockScrollY = Math.max(0, Math.round(sidebarDocTop - navBottom) + 1);
-        placeCards(shopProgress);
-      }
-
-      function placeCards(p) {
-        var vw    = window.innerWidth;
-        var cardW = 302;
-        var gap   = 20;
-        var totalW = 3 * cardW + 2 * gap;
-
-        // all three cards centred as a group
-        var startX = (vw - totalW) / 2;
-        var fx1 = startX;
-        var fx2 = startX + cardW + gap;
-        var fx3 = startX + 2 * (cardW + gap);
-
-        // card 1 stays in the centre slot, 2 & 3 burst out from behind it
-        var cx = fx2;
-
-        card1.style.zIndex = '2';
-        card2.style.zIndex = '1';
-        card3.style.zIndex = '1';
-
-        card1.style.left = Math.round(cx) + 'px';
-        card2.style.left = Math.round(cx + (fx1 - cx) * p) + 'px';
-        card3.style.left = Math.round(cx + (fx3 - cx) * p) + 'px';
-      }
-
-      function snapTo(y) {
-        snapping = true;
-        window.scrollTo(0, y);
-      }
-
-      window.addEventListener('wheel', function (e) {
-        /* ── locked: consume delta, drive animation ── */
-        if (shopState === 'locked') {
-          e.preventDefault();
-          shopProgress += e.deltaY / RANGE;
-
-          if (shopProgress >= 1) {
-            shopProgress = 1; placeCards(1);
-            shopState = 'after';
-            return;
-          }
-          if (shopProgress <= 0) {
-            shopProgress = 0; placeCards(0);
-            shopState = 'before';
-            return;
-          }
-          placeCards(shopProgress);
-          return;
-        }
-
-        /* ── scrolling down into the shop zone ── */
-        if (shopState === 'before' && e.deltaY > 0 &&
-            window.scrollY + e.deltaY >= lockScrollY) {
-          e.preventDefault();
-          snapTo(lockScrollY);
-          shopState = 'locked';
-          shopProgress = 0;
-          return;
-        }
-
-        /* ── scrolling up back into the shop zone from below ── */
-        if (shopState === 'after' && e.deltaY < 0 &&
-            window.scrollY <= lockScrollY + 5) {
-          e.preventDefault();
-          snapTo(lockScrollY);
-          shopState = 'locked';
-          shopProgress = 1;
-          shopProgress += e.deltaY / RANGE;
-          shopProgress = Math.max(0, Math.min(1, shopProgress));
-          placeCards(shopProgress);
-          if (shopProgress <= 0) shopState = 'before';
-        }
-      }, { passive: false });
-
-      /* safety net for momentum / trackpad overshoots */
-      window.addEventListener('scroll', function () {
-        if (snapping) { snapping = false; return; }
-
-        if (shopState === 'locked') {
-          snapTo(lockScrollY); return;
-        }
-        if (shopState === 'before' && window.scrollY >= lockScrollY) {
-          shopState = 'locked'; shopProgress = 0; snapTo(lockScrollY); return;
-        }
-        if (shopState === 'after' && window.scrollY < lockScrollY) {
-          shopState = 'locked'; shopProgress = 1; snapTo(lockScrollY);
-        }
-      }, { passive: true });
-
-      window.addEventListener('resize', computeLock);
-      computeLock();
-    })();
-    </script>
 </body>
 </html>
