@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>художник</title>
+    <link rel="stylesheet" href="assets/style.css">
+  </head>
+  <body>
+    <script src="assets/index.js"></script>
+    <!--
+      Individual artist detail template (kept for future use).
+      This was the original content of artists.html before it was
+      rebuilt to match the Figma "Наши художники" listing page.
+      Wire this up as artist-<slug>.html pages when each artist's
+      detail page is ready to be built.
+    -->
+    <div class="wrapper">
+        <div class="navbar">
+            <div class="navbar-container" id="navbar-instance">
+                <ul>
+                    <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <picture class="menu-toggle">
+                        <source media="(max-width: 1200px)" srcset="assets/hamburger_menu.png">
+                        <img src="assets/hamburger_menu.svg" alt="menu" class="hamburger-icon">
+                    </picture></a></li>
+                    <li><a href="contact.html">контакты</a></li>
+                    <li><a href="book.html">книга</a></li>
+                    <li><a href="shop.html">магазин</a></li>
+                    <li><a href="artists.html">художники</a></li>
+                    <li><a href="about.html">о нас</a></li>
+                </ul>
+            </div>
+            <div class="logo">
+                <a href="index.html">Spatial Art Bureau</a>
+            </div>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-box-title">
+            <p>Имя художника</p>
+          </div>
+        </div>
+        <div class="grid-left"></div>
+        <div class="grid-left-inner"></div>
+        <div class="grid-right-inner"></div>
+        <div class="grid-right"></div>
+        <div class="artist-block">
+          <div class="artist-photo">
+          </div>
+          <div class="artist-text">
+            <p>Художник, работающий с природными материалами. Практика сосредоточена на взаимодействии архитектурных форм с естественной средой и процессами времени. Получил образование в области скульптуры и пространственного искусства, после чего начал создавать объекты для открытых природных и городских пространств.<br><br>В своих работах использует дерево, камень, глину и необработанные органические материалы. Создаёт объекты, которые постепенно меняются под воздействием окружающей среды, фиксируя процессы разрушения и трансформации.</p>
+          </div>
+        </div>
+        <div class="moving-right-block">
+          <div class="work-title">
+            <p>Название работы</p>
+          </div>
+          <div class="work-desc-upper">
+            <p>описание работы</p>
+          </div>
+          <div class="work-photos">
+            <div class="photo1">
+            </div>
+            <div class="photo2">
+            </div>
+            <div class="photo3">
+            </div>
+          </div>
+          <div class="work-desc-lower">
+            <p>описание работы</p>
+          </div>
+        </div>
+    </div>
+  <script>
+    function positionSidebar() {
+      var navbar = document.querySelector('.navbar');
+      var sidebar = document.querySelector('.sidebar-box');
+      if (!navbar || !sidebar) return;
+      var top = Math.round(navbar.getBoundingClientRect().bottom) - 1;
+      sidebar.style.top = top + 'px';
+    }
+    positionSidebar();
+    window.addEventListener('resize', positionSidebar);
+  </script>
+  </body>
+</html>

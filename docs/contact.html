@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>контакты</title>
+    <link rel="stylesheet" href="assets/style.css">
+  </head>
+  <body>
+    <script src="assets/index.js"></script>
+    <div class="wrapper">
+        <div class="navbar">
+            <div class="navbar-container" id="navbar-instance">
+                <ul>
+                    <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <picture class="menu-toggle">
+                        <source media="(max-width: 1200px)" srcset="assets/hamburger_menu.png">
+                        <img src="assets/hamburger_menu.svg" alt="menu" class="hamburger-icon">
+                    </picture></a></li>
+                    <li><a href="contact.html">контакты</a></li>
+                    <li><a href="book.html">книга</a></li>
+                    <li><a href="shop.html">магазин</a></li>
+                    <li><a href="artists.html">художники</a></li>
+                    <li><a href="about.html">о нас</a></li>
+                </ul>
+            </div>
+            <div class="logo">
+                <a href="index.html">Spatial Art Bureau</a>
+            </div>
+        </div>
+        <div class="sidebar-box sidebar-box--contact-page">
+          <div class="sidebar-box-title">
+            <p>Контакты</p>
+          </div>
+        </div>
+        <div class="grid-left"></div>
+        <div class="grid-left-inner"></div>
+        <div class="grid-right-inner"></div>
+        <div class="grid-right"></div>
+
+        <div class="text-box-1">
+          <p>Номер телефона: +89999999999</p>
+          <p>Почта: pochta@gmail.com</p>
+        </div>
+        <div class="text-box-2">
+          <p>tg: @sbureau</p>
+          <p>vk: @sbureau</p>
+        </div>
+        <div class="text-box-3">
+          <p class="title-placement">Где мы находимся</p>
+          <p>Адрес: г. Москва, Малая Пионерская улица, 12</p>
+        </div>
+
+        <div class="contact-map">
+          <img src="assets/map.png" alt="map" class="contact-map__photo">
+        </div>
+
+        <div class="horizontal-grid horizontal-grid--contact-page"></div>
+
+        <div class="footer--contact-page">
+        <ul class="footer-upper-row">
+            <li><a href="about.html">о нас</a></li>
+            <li><a href="artists.html">наши художники</a></li>
+            <li><a href="shop.html">магазин</a></li>
+            <li><a href="book.html">книга</a></li>
+        </ul>
+        <ul class="footer-lower-row">
+            <li><a href="change_later" class="footer-cta-btn">заказать арт-объект</a></li>
+            <li><a href="change_later" class="footer-cta-btn">стать частью бюро</a></li>
+        </ul>
+        <ul class="footer-lowest-row">
+            <li><a href="https://t.me/sbureau">[tg: @sbureau]</a></li>
+            <li class="footer-contacts">
+                <span>pochta@gmail.com</span>
+                <span>+89999999999</span>
+            </li>
+            <li><a href="https://vk.com/sbureau">[vk: @sbureau]</a></li>
+        </ul>
+        <div class="footer-line"></div>
+    </div>
+    </div>
+  <script>
+    function positionSidebar() {
+      var navbar = document.querySelector('.navbar');
+      var sidebar = document.querySelector('.sidebar-box');
+      if (!navbar || !sidebar) return;
+      var top = Math.round(navbar.getBoundingClientRect().bottom) - 1;
+      sidebar.style.top = top + 'px';
+    }
+    positionSidebar();
+    window.addEventListener('resize', positionSidebar);
+  </script>
+  </body>
+</html>

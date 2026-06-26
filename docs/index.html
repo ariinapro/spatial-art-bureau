@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spatial Art Bureau</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <script src="assets/index.js"></script>
+    <div class="wrapper">
+        <div class="navbar">
+            <div class="navbar-container" id="navbar-instance">
+                <ul>
+                    <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <picture class="menu-toggle">
+                            <source media="(max-width: 1200px)" srcset="assets/hamburger_menu.png">
+                            <img src="assets/hamburger_menu.svg" alt="menu" class="hamburger-icon">
+                        </picture>
+                    </a></li>
+                    <li><a href="contact.html">контакты</a></li>
+                    <li><a href="book.html">книга</a></li>
+                    <li><a href="shop.html">магазин</a></li>
+                    <li><a href="artists.html">художники</a></li>
+                    <li><a href="about.html">о нас</a></li>
+                </ul>
+            </div>
+            <div class="logo">
+                <a href="index.html">Spatial Art Bureau</a>
+            </div>
+        </div>
+        <div class="grid-left"></div>
+        <div class="grid-left-inner"></div>
+        <div class="grid-right-inner"></div>
+        <div class="grid-right"></div>
+    </div>
+    <div class="intro-text">
+        <p>Мы создаём объекты и инсталляции, которые вступают в диалог с окружающей средой. Каждый проект становится точкой пересечения архитектуры, художественной практики и человеческого опыта.</p>
+    </div>
+    <div class="dotted-line">
+    </div>
+
+    <div class="main-screen-image">
+        <img src="assets/main-screen-image.png" alt="Main screen" class="main-screen-image__photo">
+    </div>
+
+    <div class="horizontal-grid">
+    </div>
+
+    <div class="sidebar-box sidebar-box--about">
+        <div class="sidebar-box-title">
+            <p>О нас</p>
+        </div>
+    </div>
+
+    <div class="about-image">
+        <img src="assets/main-about.png" alt="About" class="about-image__photo">
+    </div>
+
+    <div class="about-image-border"></div>
+
+    <div class="about-text">
+        <p>Мы рассматриваем арт-объекты как процесс, как незавершённую форму. Инсталляции — как временные и постоянные структуры, способные менять восприятие среды.</p>
+        <div class="more-link">
+            <a href="about.html">узнать больше</a>
+            <img src="assets/arrow.png" alt="arrow" class="arrow">
+        </div>
+    </div>
+
+    <div class="horizontal-grid horizontal-grid--artists">
+    </div>
+
+    <div class="sidebar-box sidebar-box--artists">
+        <div class="sidebar-box-title">
+            <p>Наши художники</p>
+        </div>
+
+        <div class="info-text">
+            <p>Платформа объединяет профессиональных художников, работающих на пересечении искусства, архитектуры и пространственных практик.</p>
+        </div>
+    </div>
+    
+    <div class="artists-carousel-wrapper">
+        <div class="artists-carousel-track">
+            <div class="artists-carousel-item">
+                <img src="assets/work-1-img-1.png" alt="Лев Ратманов" class="artists-carousel-item__img">
+            </div>
+            <div class="artists-carousel-item">
+                <img src="assets/work-3-img-1.png" alt="Алиса Северина" class="artists-carousel-item__img">
+            </div>
+            <div class="artists-carousel-item">
+                <img src="assets/work-4-img-1.png" alt="Марк Осипов" class="artists-carousel-item__img">
+            </div>
+        </div>
+    </div>
+    
+    <div class="artist-and-title">
+        <p>Имя художника — название инсталляции (2022 г.)</p>
+    </div>
+    
+    <div class="more-link more-link--artists">
+        <a href="artists.html">все художники</a>
+        <img src="assets/arrow.png" alt="arrow" class="arrow">
+    </div>
+
+    <div class="horizontal-grid horizontal-grid--shop">
+    </div>
+
+    <div class="sidebar-box sidebar-box--shop">
+        <div class="sidebar-box-title">
+            <p>Магазин</p>
+        </div>
+        
+        <div class="info-text info-text--shop">
+            <p>Мерч бюро — продолжение художественных проектов в материальной форме.<br><br>Объекты, графика и лимитированные серии создаются как часть пространственной практики и сохраняют связь с инсталляциями, материалами и визуальным языком бюро.</p>
+        </div>
+    </div>
+
+    <div class="product-carousel-wrapper">
+        <div class="product-card" id="shop-card-1">
+            <div class="product-photo">
+                <img src="assets/t-shirt-main.png" alt="футболка" class="product-photo__img">
+            </div>
+            <div class="product-title"><p>футболка</p></div>
+        </div>
+        <div class="product-card" id="shop-card-2">
+            <div class="product-photo">
+                <img src="assets/phone-case.png" alt="чехол" class="product-photo__img">
+            </div>
+            <div class="product-title"><p>чехол</p></div>
+        </div>
+        <div class="product-card" id="shop-card-3">
+            <div class="product-photo">
+                <img src="assets/tape.png" alt="скотч" class="product-photo__img">
+            </div>
+            <div class="product-title"><p>скотч</p></div>
+        </div>
+    </div>
+
+    <div class="horizontal-grid horizontal-grid--book">
+    </div>
+
+    <div class="sidebar-box sidebar-box--book">
+        <div class="sidebar-box-title">
+            <p>Книга</p>
+        </div>
+
+        <div class="info-text info-text--book">
+            <p>Книга объединяет проекты, архивные материалы, тексты и документацию инсталляций, созданных бюро.<br>Ее цель — зафиксировать процессы, состояния пространства и изменения, возникающие внутри проектов.</p>
+        </div>
+
+        <div class="book-cover">
+        </div>
+        <div class="more-link more-link--book">
+            <a href="book.html">посмотреть книгу</a>
+            <img src="assets/arrow.png" alt="arrow" class="arrow">
+        </div>
+    </div>
+
+    <div class="horizontal-grid horizontal-grid--footer">
+    </div>
+
+    <div class="footer">
+        <ul class="footer-upper-row">
+            <li><a href="about.html">о нас</a></li>
+            <li><a href="artists.html">наши художники</a></li>
+            <li><a href="shop.html">магазин</a></li>
+            <li><a href="book.html">книга</a></li>
+        </ul>
+        <ul class="footer-lower-row">
+            <li><a href="change_later" class="footer-cta-btn">заказать арт-объект</a></li>
+            <li><a href="change_later" class="footer-cta-btn">стать частью бюро</a></li>
+        </ul>
+        <ul class="footer-lowest-row">
+            <li><a href="https://t.me/sbureau">[tg: @sbureau]</a></li>
+            <li class="footer-contacts">
+                <span>pochta@gmail.com</span>
+                <span>+89999999999</span>
+            </li>
+            <li><a href="https://vk.com/sbureau">[vk: @sbureau]</a></li>
+        </ul>
+        <div class="footer-line"></div>
+    </div>
+    <script>
+    (function () {
+      var artistsSidebar = document.querySelector('.sidebar-box--artists');
+      var navbar         = document.querySelector('.navbar');
+      var track          = document.querySelector('.artists-carousel-track');
+      if (!artistsSidebar || !track) return;
+
+      var TOTAL_RANGE = 600; // wheel-delta px for full p 0→1 transition
+      var GAP         = 30;  // px gap between cards
+
+      var state       = 'before';
+      var targetP     = 0;
+      var visualP     = 0;
+      var lockScrollY = 0;
+      var snapping    = false;
+      var rafId       = null;
+
+      function computeLock() {
+        var navBottom        = navbar ? navbar.getBoundingClientRect().bottom : 0;
+        var sidebarBottomDoc = artistsSidebar.getBoundingClientRect().bottom + window.scrollY;
+        lockScrollY = Math.max(0, Math.round(sidebarBottomDoc - navBottom));
+        placeTrack(visualP);
+      }
+
+      // p=0: work-1 centered (work-3 half-left, work-4 half-right)
+      // p=1: work-4 centered (work-1 half-left)
+      function placeTrack(p) {
+        var vw = window.innerWidth;
+        var tx = -(0.25 * vw + GAP) - p * (0.5 * vw + GAP);
+        track.style.transform = 'translateX(' + Math.round(tx) + 'px)';
+      }
+
+      function tick() {
+        var diff = targetP - visualP;
+        if (Math.abs(diff) < 0.0008) {
+          visualP = targetP;
+          placeTrack(visualP);
+          rafId = null;
+          return;
+        }
+        visualP += diff * 0.1;
+        placeTrack(visualP);
+        rafId = requestAnimationFrame(tick);
+      }
+
+      function startAnim() { if (!rafId) rafId = requestAnimationFrame(tick); }
+      function snapTo(y)   { snapping = true; window.scrollTo(0, y); }
+
+      window.addEventListener('wheel', function (e) {
+        if (state === 'locked') {
+          e.preventDefault();
+          targetP += e.deltaY / TOTAL_RANGE;
+          if (targetP >= 1) { targetP = 1; startAnim(); state = 'after';  return; }
+          if (targetP <= 0) { targetP = 0; startAnim(); state = 'before'; return; }
+          startAnim();
+          return;
+        }
+        if (state === 'before' && e.deltaY > 0 && window.scrollY + e.deltaY >= lockScrollY) {
+          e.preventDefault();
+          snapTo(lockScrollY);
+          targetP = 0; visualP = 0; placeTrack(0);
+          state = 'locked';
+          return;
+        }
+        if (state === 'after' && e.deltaY < 0 && window.scrollY <= lockScrollY + 5) {
+          e.preventDefault();
+          snapTo(lockScrollY);
+          state = 'locked';
+          targetP = 1;
+          targetP += e.deltaY / TOTAL_RANGE;
+          targetP = Math.max(0, Math.min(1, targetP));
+          startAnim();
+          if (targetP <= 0) state = 'before';
+        }
+      }, { passive: false });
+
+      window.addEventListener('scroll', function () {
+        if (snapping) { snapping = false; return; }
+        if (state === 'locked') { snapTo(lockScrollY); return; }
+        if (state === 'before' && window.scrollY >= lockScrollY) {
+          targetP = 0; visualP = 0; placeTrack(0);
+          state = 'locked'; snapTo(lockScrollY); return;
+        }
+        if (state === 'after' && window.scrollY < lockScrollY) {
+          targetP = 1; visualP = 1; placeTrack(1);
+          state = 'locked'; snapTo(lockScrollY);
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', computeLock);
+      computeLock();
+    })();
+    </script>
+    <script>
+    (function () {
+      var shopSidebar = document.querySelector('.sidebar-box--shop');
+      var navbar      = document.querySelector('.navbar');
+      var card1 = document.getElementById('shop-card-1');
+      var card2 = document.getElementById('shop-card-2');
+      var card3 = document.getElementById('shop-card-3');
+      if (!shopSidebar || !card1) return;
+
+      var shopState    = 'before'; // 'before' | 'locked' | 'after'
+      var shopProgress = 0;        // 0..1
+      var lockScrollY  = 0;
+      var RANGE        = 450;      // wheel-delta px for full animation
+      var snapping     = false;
+
+      function computeLock() {
+        var navBottom      = navbar ? navbar.getBoundingClientRect().bottom : 0;
+        var sidebarDocTop  = shopSidebar.getBoundingClientRect().top + window.scrollY;
+        lockScrollY = Math.max(0, Math.round(sidebarDocTop - navBottom) + 1);
+        placeCards(shopProgress);
+      }
+
+      function placeCards(p) {
+        var vw    = window.innerWidth;
+        var cardW = 302;
+        var gap   = 20;
+        var totalW = 3 * cardW + 2 * gap;
+
+        // all three cards centred as a group
+        var startX = (vw - totalW) / 2;
+        var fx1 = startX;
+        var fx2 = startX + cardW + gap;
+        var fx3 = startX + 2 * (cardW + gap);
+
+        // card 1 stays in the centre slot, 2 & 3 burst out from behind it
+        var cx = fx2;
+
+        card1.style.zIndex = '2';
+        card2.style.zIndex = '1';
+        card3.style.zIndex = '1';
+
+        card1.style.left = Math.round(cx) + 'px';
+        card2.style.left = Math.round(cx + (fx1 - cx) * p) + 'px';
+        card3.style.left = Math.round(cx + (fx3 - cx) * p) + 'px';
+      }
+
+      function snapTo(y) {
+        snapping = true;
+        window.scrollTo(0, y);
+      }
+
+      window.addEventListener('wheel', function (e) {
+        /* ── locked: consume delta, drive animation ── */
+        if (shopState === 'locked') {
+          e.preventDefault();
+          shopProgress += e.deltaY / RANGE;
+
+          if (shopProgress >= 1) {
+            shopProgress = 1; placeCards(1);
+            shopState = 'after';
+            return;
+          }
+          if (shopProgress <= 0) {
+            shopProgress = 0; placeCards(0);
+            shopState = 'before';
+            return;
+          }
+          placeCards(shopProgress);
+          return;
+        }
+
+        /* ── scrolling down into the shop zone ── */
+        if (shopState === 'before' && e.deltaY > 0 &&
+            window.scrollY + e.deltaY >= lockScrollY) {
+          e.preventDefault();
+          snapTo(lockScrollY);
+          shopState = 'locked';
+          shopProgress = 0;
+          return;
+        }
+
+        /* ── scrolling up back into the shop zone from below ── */
+        if (shopState === 'after' && e.deltaY < 0 &&
+            window.scrollY <= lockScrollY + 5) {
+          e.preventDefault();
+          snapTo(lockScrollY);
+          shopState = 'locked';
+          shopProgress = 1;
+          shopProgress += e.deltaY / RANGE;
+          shopProgress = Math.max(0, Math.min(1, shopProgress));
+          placeCards(shopProgress);
+          if (shopProgress <= 0) shopState = 'before';
+        }
+      }, { passive: false });
+
+      /* safety net for momentum / trackpad overshoots */
+      window.addEventListener('scroll', function () {
+        if (snapping) { snapping = false; return; }
+
+        if (shopState === 'locked') {
+          snapTo(lockScrollY); return;
+        }
+        if (shopState === 'before' && window.scrollY >= lockScrollY) {
+          shopState = 'locked'; shopProgress = 0; snapTo(lockScrollY); return;
+        }
+        if (shopState === 'after' && window.scrollY < lockScrollY) {
+          shopState = 'locked'; shopProgress = 1; snapTo(lockScrollY);
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', computeLock);
+      computeLock();
+    })();
+    </script>
+</body>
+</html>

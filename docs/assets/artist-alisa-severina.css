@@ -1,0 +1,114 @@
+@keyframes page-rise {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes page-rise-centered {
+  from { opacity: 0; transform: translateX(-50%) translateY(30px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.wrapper > *:not(.navbar):not(.footer--artist-page):not(.artist-cta-btn) {
+  animation: page-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.footer--artist-page,
+.artist-cta-btn {
+  animation: page-rise-centered 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.grid-left-inner {
+  z-index: 11;
+}
+
+/* left column locks in place while right side scrolls */
+.artist-block,
+.sidebar-box--artist-page,
+.artist-sidebar-line {
+  position: fixed;
+  z-index: 11;
+}
+
+.work-separator {
+  margin-top: 80px;
+  margin-left: -10px;
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    black 0,
+    black 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  background-size: 20px 1px;
+}
+
+.work-title--second {
+  margin-top: 60px;
+}
+
+.work-intro-right {
+  margin-left: 50%;
+  margin-top: 20px;
+}
+
+.work-full-photo {
+  width: 100%;
+  margin-top: 24px;
+  background-color: #AFAFAF;
+  overflow: hidden;
+}
+.work-full-photo--60 {
+  width: 60%;
+}
+
+.work-full-photo__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.work-full-text {
+  margin-top: 24px;
+}
+
+.work-separator--full {
+  position: relative;
+  z-index: 12;
+  margin-top: 80px;
+  left: calc(-(70px + 38.2vw));
+  width: 100vw;
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    black 0,
+    black 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  background-size: 20px 1px;
+}
+
+.artist-cta-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  background-color: black;
+  color: #EFEBE6;
+}
+.artist-cta-btn:hover {
+  background-color: #EFEBE6;
+  color: black;
+}
+
+/* right block sections start invisible and slide up on scroll */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
